@@ -1,131 +1,67 @@
-#include<stdio.h>
+#include<bits/stdc++.h>
+using namespace std;
 
-char arr[26][26];
+//started  @19.15
 
-char message[22],key[22],emessage[22],retMessage[22];
-
-int findRow(char);
-
-int findColumn(char);
-
-int findDecRow(char,int);
-
-int main() {
-
-int i=0,j,k,r,c;
-
-clrscr();
-
-k=96;
-
-for (i=0;i<26;i++) {
-
-k++;
-
-for (j=0;j<26;j++) {
-
-arr[i][j]=k++;
-
-if(k==123)
-
-k=97;
-
+int numAssign(char a) 
+{
+    string alp="abcdefghijklmnopqrstuvwxyz"; //referance string
+    int x;
+    for(int i=0;i<26;i++)
+    {
+        if (alp[i]==a) // matching the characters to the referance string
+        x=i;
+    }
+    return x;
 }
 
+char charAssign(int b)
+{
+    string alp="abcdefghijklmnopqrstuvwxyz"; //referance string
+    char x=alp[b];
+    return x;
 }
 
-printf("\nEnter message\n");
-
-gets(message);
-
-printf("\nEnter the key\n");
-
-gets(key);
-
-// Encryption
-
-for (i=0;key[i]!=NULL;i++) {
-
-c=findRow(key[i]);
-
-r=findColumn(message[i]);
-
-emessage[i]=arr[r][c];
-
+int main(){
+    // 1) Take the input of the plain text and the key (they should be of the same length)
+    
+    string pt,key;
+    cout<<"Enter the plain text : ";
+    cin>>pt;
+    cout<<"Enter the key : ";
+    cin>>key;
+    
+    string finalCiphered;
+    
+    
+    
+    for(int i=0;i<pt.length();i++)
+    {
+        int x=numAssign(pt[i]); // 2) To assign numbers to the characters
+        
+        int y=numAssign(key[i]);
+        
+        // cout<<"x= "<<x<<endl<<"y= "<<y<<endl;
+        
+         int doXor= x^y;
+         
+         
+         if(doXor>=26)
+         doXor=doXor-26;
+         
+        //  cout<<doXor<<endl;
+        
+        char a=charAssign(doXor);  //to assign the character to the numbers
+        
+       
+        
+        // cout<<"The ciphered character is :"<<a<<endl;
+        
+        finalCiphered=finalCiphered+a;
+        
+    }
+     
+    cout<<finalCiphered;
 }
-
-emessage[i]='\0';
-
-printf("\n Encrypted message is:\n\n");
-
-for (i=0;emessage[i]!=NULL;i++)
-
-printf("%c",emessage[i]);
-
-//decryption
-
-for (i=0;key[i]!=NULL;i++) {
-
-c=findColumn(key[i]);
-
-r=findDecRow(emessage[i],c);
-
-retMessage[i]=arr[r][0];
-
-}
-
-retMessage[i]='\0';
-
-printf("\n\nMessage Retrieved is:\n\n");
-
-for (i=0;retMessage[i]!=NULL;i++)
-
-printf("%c",retMessage[i]);
-
-getch();
-
-return(0);
-
-}
-
-int findRow(char c) {
-
-int i;
-
-for (i=0;i<26;i++) {
-
-if(arr[0][i]==c)
-
-return(i);
-
-}
-
-}
-
-int findColumn(char c) {
-
-int i;
-
-for (i=0;i<26;i++) {
-
-if(arr[i][0]==c)
-
- return(i);
-
-}
-
-}
-
-int findDecRow(char c,int j) {
-
-int i;
-
-for (i=0;i<26;i++) {
-
-if(arr[i][j]==c)
-
-return(i);
-
-}
-
-}
+// complete @19.50
+//made with love @shrusky
