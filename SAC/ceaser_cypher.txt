@@ -1,0 +1,42 @@
+#include<iostream>
+using namespace std;
+
+
+string encrpyt(string plain_text,int key){
+    string encrypt="";
+    for(int i=0;i<plain_text.length();i++){
+        if(isupper(plain_text[i])){
+            encrypt+=char(int(plain_text[i]+key-65)%26+65);
+        }
+        else{
+            encrypt+=char(int(plain_text[i]+key-97)%26+97);
+        }
+    }
+    return encrypt;
+}
+
+string decrypt(string encrypt,int key){
+    string decrypt="";
+        for(int i=0;i<encrypt.length();i++){
+        if(isupper(encrypt[i])){
+            decrypt+=char(int(encrypt[i]-key-65)%26+65);
+        }
+        else{
+            decrypt+=char(int(encrypt[i]-key-97)%26+97);
+        }
+    }
+    return decrypt;
+}
+
+
+int main(){
+    string plain_text="WATCH THEM RUN";
+    int key;
+    cout<<"ENTER THE KEY";
+    cin>>key;
+    cout<<"ENCRYPTED TEXT: "<<encrpyt(plain_text,key)<<endl;
+    cout<<"decrypt: "<<decrypt(encrpyt(plain_text,key),key)<<endl;
+    return 0;
+    
+    
+}
