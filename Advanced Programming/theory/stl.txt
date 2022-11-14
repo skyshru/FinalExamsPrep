@@ -1,0 +1,26 @@
+* Containers can be described as the objects that hold the data of the same type. Containers are used to implement different data structures for example arrays, list, 
+  trees, etc.
+  
+* List is the sequence containers that allow the insertions and deletions from anywhere.
+
+* Deque is the double ended queue that allows the insertion and deletion from both the ends.
+
+* Set is an associate container for storing unique sets.
+
+* Multiset is an associate container for storing non- unique sets.
+
+* Map is an associate container for storing unique key-value pairs, i.e. each key is associated with only one value
+
+* Multimap is an associate container for storing key- value pair, and each key can be associated with more than one value.
+
+* Priority Queue is an abstract data type that is similar to a queue, and every element has some priority value associated with it. The priority of the elements in a
+  priority queue determines the order in which elements are served (i.e., the order in which they are removed). If in any case the elements have same priority, they are 
+  served as per their ordering in the queue.
+  
+* Classification of containers :
+
+Sequence containers
+Associative containers (like the ones which store the key value pairs)
+Derived containers
+
+
